@@ -9,7 +9,7 @@ if ! command -v curl >/dev/null 2>&1; then
   apt-get update >/dev/null 2>&1
   apt-get install -y curl >/dev/null 2>&1
 fi
-source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/core.func)
+source <(curl -fsSL https://raw.githubusercontent.com/MrBrisk/ProxmoxVE/main/misc/core.func)
 load_functions
 # This function enables IPv6 if it's not disabled and sets verbose mode
 verb_ip6() {
@@ -103,7 +103,7 @@ network_check() {
   fi
 
   # DNS resolution checks for GitHub-related domains (IPv4 and/or IPv6)
-  GIT_HOSTS=("github.com" "raw.githubusercontent.com" "api.github.com" "git.community-scripts.org")
+  GIT_HOSTS=("github.com" "raw.githubusercontent.com" "api.github.com" "git..org")
   GIT_STATUS="Git DNS:"
   DNS_FAILED=false
 
@@ -147,7 +147,7 @@ EOF
   rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED
   msg_ok "Updated Container OS"
 
-  source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/tools.func)
+  source <(curl -fsSL https://raw.githubusercontent.com/MrBrisk/ProxmoxVE/main/misc/tools.func)
 }
 
 # This function modifies the message of the day (motd) and SSH settings
@@ -197,7 +197,7 @@ EOF
     systemctl restart $(basename $(dirname $GETTY_OVERRIDE) | sed 's/\.d//')
     msg_ok "Customized Container"
   fi
-  echo "bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/${app}.sh)\"" >/usr/bin/update
+  echo "bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/MrBrisk/ProxmoxVE/main/ct/${app}.sh)\"" >/usr/bin/update
   chmod +x /usr/bin/update
 
   if [[ -n "${SSH_AUTHORIZED_KEY}" ]]; then
